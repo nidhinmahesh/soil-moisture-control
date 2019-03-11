@@ -84,8 +84,6 @@ Output Signal Both Analog and Digital
 ###### 3. An IC on the back side of the sensor
 
 
-### How it Works? Contd.
-
 ###### 1. FOR MEASURING TEMPERATURE:
 
 ###### ● uses a NTC temperature sensor or a thermistor
@@ -105,8 +103,6 @@ increase of the temperature
 ```
 “NTC” : “ Negative Temperature Coefficient ”
 ```
-
-### How it Works? Contd.
 
 ###### 2. FOR MEASURING HUMIDITY:
 
