@@ -1,25 +1,25 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
+	"encoding/json" //for Unmarshal
+	"fmt" //for print
 	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
 )
 
-type people struct {
-	//Number int `json:"number"`/
+type weather struct {
+	Number int `json:"number"`
 
 }
 
 func main() {
 
-	url := ""
+	url := "api.openweathermap.org/data/2.5/forecast?id=524901&APPID=7afb6f4a54cc55be8e3adc6fc7a2cb31"
 
 	spaceClient := http.Client{
-		Timeout: time.Second * 2, // Maximum of 2 secs
+		Timeout: time.Second * 2, // Maximum of 2 secs to avoid long timeouts
 	}
 
 	req, err := http.NewRequest(http.MethodGet, url, nil)
