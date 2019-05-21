@@ -10,15 +10,17 @@ import (
 )
 
 type weather struct {
-	Number int `json:"number"`
-
+	Main struct {
+		Temprature float64 `json:"temp"`
+		Humidity float64 `json:"humidity"`
+	} `json:"main"`
 }
 
 func main() {
 
-	url := "api.openweathermap.org/data/2.5/forecast?id=524901&APPID=7afb6f4a54cc55be8e3adc6fc7a2cb31"
+	url := "http://api.openweathermap.org/data/2.5/weather?id=524901&APPID=7afb6f4a54cc55be8e3adc6fc7a2cb31"
 
-	spaceClient := http.Client{
+	weatherClient := http.Client{
 		Timeout: time.Second * 2, // Maximum of 2 secs to avoid long timeouts
 	}
 
@@ -29,7 +31,7 @@ func main() {
 
 	req.Header.Set("User-Agent", "soil-moisture-control")
 
-	res, getErr := spaceClient.Do(req)
+	res, getErr := weatherClient.Do(req)
 	if getErr != nil {
 		log.Fatal(getErr)
 	}
@@ -39,11 +41,12 @@ func main() {
 		log.Fatal(readErr)
 	}
 
-	cityname := "name"
-	jsonErr := json.Unmarshal(body, &cityname)
+	weather0 := weather{}
+	jsonErr := json.Unmarshal(body, &weather0)
 	if jsonErr != nil {
 		log.Fatal(jsonErr)
 	}
 
-	fmt.Println(cityname)
+	fmt.Println(weather0.Main.Temprature)
+	fmt.Println(weather0.Main.Humidity)
 }
