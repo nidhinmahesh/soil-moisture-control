@@ -16,9 +16,9 @@ type weather struct {
 	} `json:"main"`
 }
 
-func main() {
+func Fetchweb() {
 
-	url := "http://api.openweathermap.org/data/2.5/weather?id=524901&APPID=7afb6f4a54cc55be8e3adc6fc7a2cb31"
+	url := "http://api.openweathermap.org/data/2.5/weather?id=1267360&APPID=7afb6f4a54cc55be8e3adc6fc7a2cb31"
 
 	weatherClient := http.Client{
 		Timeout: time.Second * 2, // Maximum of 2 secs to avoid long timeouts
@@ -47,6 +47,9 @@ func main() {
 		log.Fatal(jsonErr)
 	}
 
-	fmt.Println(weather0.Main.Temprature)
-	fmt.Println(weather0.Main.Humidity)
+	temp := weather0.Main.Temprature
+	hum := weather0.Main.Humidity
+
+	fmt.Println(temp)
+	fmt.Println(hum)
 }
