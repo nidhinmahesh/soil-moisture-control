@@ -1,8 +1,7 @@
 package main
 
 import (
-	"encoding/json" //for Unmarshal
-	"fmt" //for print
+	"encoding/json" 
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -47,9 +46,6 @@ func Fetchweb() {
 		log.Fatal(jsonErr)
 	}
 
-	temp := weather0.Main.Temprature
-	hum := weather0.Main.Humidity
-
-	fmt.Println(temp)
-	fmt.Println(hum)
+	temp = weather0.Main.Temprature
+	hum = weather0.Main.Humidity	
 }
