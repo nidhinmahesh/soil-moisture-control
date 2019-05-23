@@ -7,13 +7,13 @@ import (
 
 var hum float64
 var temp float64
-var speed float64
+var rpm float64
 
 
 func get(w http.ResponseWriter, r *http.Request) {
   Fetchweb()	
   Computation()
-  message := strconv.FormatFloat(speed, 'f', 1, 64)
+  message := strconv.FormatFloat(rpm, 'f', 1, 64)
 
    w.Write([]byte(message))
 }
